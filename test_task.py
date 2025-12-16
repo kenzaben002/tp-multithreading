@@ -6,7 +6,10 @@ from task import Task
 class TestTask(unittest.TestCase):
     def test_solution(self):
         task = Task()
-        task.work()  # Résoudre Ax = B
+        txt = task.to_json()
+        b = Task.from_json(txt)
+        self.assertEqual(b, task)
+        task.work()
         Ax = task.a @ task.x
         np.testing.assert_allclose(Ax, task.b, rtol=1e-7, atol=0)
 
