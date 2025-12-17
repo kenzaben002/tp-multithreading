@@ -14,7 +14,7 @@ QueueManager.register("get_result_queue", callable=lambda: result_queue)
 
 
 class QueueClient:
-    def __init__(self, address, authkey):
+    def __init__(self, address=("localhost", 8000), authkey=b"abc"):
         self.manager = QueueManager(address=address, authkey=authkey)
         self.manager.connect()
 
